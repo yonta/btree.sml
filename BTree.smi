@@ -1,0 +1,17 @@
+_require "basis.smi"
+
+structure BTree =
+struct
+  type key = int
+  type 'a elem = key * 'a
+  datatype 'a btree = Leaf
+                    | Node of 'a btree *
+                              'a elem option *
+                              'a btree *
+                              'a elem option *
+                              'a btree
+
+  val empty : 'a btree
+  val find : 'a btree * key -> 'a
+  val insert : 'a btree * 'a elem -> 'a btree
+end
